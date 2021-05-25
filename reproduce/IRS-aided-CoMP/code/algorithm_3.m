@@ -3,8 +3,8 @@ function [objective_value] = algorithm_3(p,H)
 warning off
 
 %% 1. Initialization \Wv_n and \mathbf{\Phi}
-RAND1 = normrnd(0,1/sqrt(2),[p.Nt,p.d]) + 1i * normrnd(0,1/sqrt(2),[p.Nt,p.d]);
-RAND2 = normrnd(0,1/sqrt(2),[p.Nt,p.d]) + 1i * normrnd(0,1/sqrt(2),[p.Nt,p.d]);
+RAND1 = normrnd(0,1/sqrt(2),[p.N_t,p.d]) + 1i * normrnd(0,1/sqrt(2),[p.N_t,p.d]);
+RAND2 = normrnd(0,1/sqrt(2),[p.N_t,p.d]) + 1i * normrnd(0,1/sqrt(2),[p.N_t,p.d]);
 W1prev = (p.P_max/norm(RAND1, 'fro')) * RAND1;       W2prev = (p.P_max/norm(RAND2, 'fro')) * RAND2;
 
 PHIprev = eye(p.M, p.M);
@@ -14,6 +14,10 @@ U = Uopt (p, H, W1prev, W2prev, PHIprev);
 Q = Qopt (p, H, W1prev, W2prev, PHIprev);
 
 W = algorithm_1 (p, H, U, Q, PHIprev);
+
+sz = size(W);
+W1 = W(1:sz(1)/2, 1:sz(2));
+W2 = W(sz(1)/2+1:sz(1), 1:sz(2));
 
 PHI = algorithm_2 (p, H, U, Q, W1, W2, PHIprev);
 
@@ -50,4 +54,3 @@ end
 objective_value = R;
 
 end
-

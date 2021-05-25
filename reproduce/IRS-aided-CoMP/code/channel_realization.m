@@ -29,4 +29,3 @@ if p.simulation_scenario == 'single cell-edge user'
 end
 
 end
-
