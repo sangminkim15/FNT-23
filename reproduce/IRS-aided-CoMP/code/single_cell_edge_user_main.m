@@ -1,4 +1,6 @@
-clear all,clc,close all
+clear
+clc
+close all
 
 %% Intelligent Reflecting Surface-Aided Joint Processing Coordinated Multipoint Transmission
 % IEEE Trans. Commun. available at https://ieeexplore.ieee.org/document/9279253/
@@ -10,7 +12,7 @@ p.num_cell = 1;
 p.simulation_scenario = 'single cell-edge user';
 p.L0_dB = -30; % channel power gain [dB]
 p.L0 = 10^(p.L0_dB/10);
-p.d0 = 1000; %reference distance [m]
+p.d0 = 1; %reference distance [m]
 % p.dx = ; % link distance
 p.alpha_br = 2.2; % path loss exponent of BS-IRS link (Rician)
 p.alpha_ru = 2.2; % path loss exponent of IRS-user link (Rician)
@@ -22,7 +24,7 @@ p.range_AoD = [0,2*pi]; % arrival of departure is randomly distributed within [0
 p.d = 2;   % number of desired data streams
 p.N_r = 2; % number of reciver antennas at user
 p.variance = -80; % noise variance [dB]
-p.np = 10^(p.variance*0.001/10);
+p.np = 10^((p.variance-30)/10);
 p.channel_realization = 1; % channel realizations
 p.b = 1; %  the number of bits to represent the resolution levels of IRS
 
@@ -65,4 +67,4 @@ grid on
 title('Average achievable rate versus BS transmit power budget')
 xlabel('Transmit power [dB]')
 ylabel('Average achievable rate (bps/Hz)')
-legend('MM,JP, continous')
+legend('MM, JP, continous')
