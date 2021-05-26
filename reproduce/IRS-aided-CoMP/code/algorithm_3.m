@@ -32,10 +32,10 @@ while true
     W2prev = Wprev(szprev(1)/2+1:szprev(1), 1:szprev(2));
     
     %% 2. Calculte \Wv^{opt} from (15)
-    U = Uopt (p, H, W1prev, W2prev, PHI);
+    U = Uopt (p, H, W1prev, W2prev, PHIprev);
     
     %% 3. Calculte \Qv^{opt} from (16)
-    Q = Qopt (p, H, W1prev, W2prev, PHI);
+    Q = Qopt (p, H, W1prev, W2prev, PHIprev);
     
     %% 4. Calculate \Wv^{opt}_n from Algorithm 1.
     W = algorithm_1 (p, H, U, Q, PHIprev);
