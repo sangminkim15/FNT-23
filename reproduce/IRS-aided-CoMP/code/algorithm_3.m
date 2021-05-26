@@ -40,6 +40,10 @@ while true
     %% 4. Calculate \Wv^{opt}_n from Algorithm 1.
     W = algorithm_1 (p, H, U, Q, PHIprev);
     
+    sz = size(W);
+    W1 = W(1:sz(1)/2, 1:sz(2));
+    W2 = W(sz(1)/2+1:sz(1), 1:sz(2));
+    
     %% 5. Calculate \Phi^{opt}_n from Algorithm 2.
     PHI = algorithm_2 (p, H, U, Q, W1, W2, PHIprev);
     
