@@ -5,6 +5,6 @@ Hb = [H1b H2b];
 
 W = [W1 ; W2];
 
-U = (Hb * (W * W') * Hb' + p.np.^2 * eye(size(Hb * (W * W') * Hb'))) \ (Hb * W);
+U = (Hb * (W * W') * Hb' + p.np * eye(p.N_t)) \ (Hb * W);
 
 end

@@ -5,7 +5,7 @@ warning off
 %% 1. Initialization \Wv_n and \mathbf{\Phi}
 RAND1 = normrnd(0,1/sqrt(2),[p.N_t,p.d]) + 1i * normrnd(0,1/sqrt(2),[p.N_t,p.d]);
 RAND2 = normrnd(0,1/sqrt(2),[p.N_t,p.d]) + 1i * normrnd(0,1/sqrt(2),[p.N_t,p.d]);
-W1prev = (p.P_max/norm(RAND1, 'fro')) * RAND1;       W2prev = (p.P_max/norm(RAND2, 'fro')) * RAND2;
+W1prev = (sqrt(p.P_max)/norm(RAND1, 'fro')) * RAND1;       W2prev = (sqrt(p.P_max)/norm(RAND2, 'fro')) * RAND2;
 
 PHIprev = eye(p.M, p.M);
 

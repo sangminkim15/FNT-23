@@ -22,7 +22,7 @@ while true
     Sprev = S;
     
     q = z - (eigmax * eye(size(AE)) - AE) * phiprev;
-    phi = - exp(1i .* angle(q));
+    phi = -exp(1i .* angle(q));
     
     S = eigmax * (phi' * phi) - 2 * real(phi' * (eigmax * eye(size(AE)) - AE) * phiprev) + phiprev' * (eigmax * eye(size(AE)) - AE) * phiprev + z' * phi + phi' * z;
     

@@ -5,8 +5,8 @@ Hb = [H1b H2b];
 
 W = [W1 ; W2];
 
-J = (Hb * (W * W') * Hb') + p.np.^2 * eye(size((Hb * (W * W') * Hb')));
+J = (Hb * (W * W') * Hb') + p.np * eye(p.N_t);
 
-Q = inv(eye(size(W' * W)) - (W' * Hb' / J) * Hb * W);
+Q = inv(eye(p.N_r) - ((W' * Hb') / J) * Hb * W);
 
 end

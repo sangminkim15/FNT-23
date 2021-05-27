@@ -15,8 +15,8 @@ W2 = W(sz(1)/2+1:sz(1), 1:sz(2));
 L = Lagrangian (p, H, U, Q, W1, W2, PHI, muprev);
 
 while true
-    mu(1) = muprev(1) + muprev(1)/ 10000 * (norm(W1, 'fro').^2 - p.P_max);
-    mu(2) = muprev(2) + muprev(2)/ 10000 * (norm(W2, 'fro').^2 - p.P_max);
+    mu(1) = muprev(1) + muprev(1)/ 50 * (norm(W1, 'fro').^2 - p.P_max);
+    mu(2) = muprev(2) + muprev(2)/ 50 * (norm(W2, 'fro').^2 - p.P_max);
     
     if mu(1) < 0
         mu(1) = 0;
