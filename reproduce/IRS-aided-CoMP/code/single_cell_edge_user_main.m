@@ -34,8 +34,8 @@ p.BS_2_location = [300,0];
 p.cell_edge_user_1_location = [0,0];
 p.IRS_location = [0,100*sqrt(3)];
 
-p.epsilon = 1e-5;
-p.zeta = 1e-5;
+p.epsilon = 1e-4;
+p.zeta = 1e-6;
 p.eta = 1e-5;
 
 %% Specific parameters for Figure 2 Conversionce behaviour of Algorithm 3.
@@ -62,7 +62,7 @@ for exp_idx = 1:p.channel_realization
 end
 average_achievable_rate = temp/p.channel_realization;
 figure
-plot(P_dB_range,average_achievable_rate)
+plot(P_dB_range,average_achievable_rate, 'LineWidth', 1.5)
 grid on
 title('Average achievable rate versus BS transmit power budget')
 xlabel('Transmit power [dB]')
