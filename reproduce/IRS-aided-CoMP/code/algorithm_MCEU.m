@@ -1,4 +1,4 @@
-function [outputArg1,outputArg2] = algorithm_MCEU(channel_coeffi)
+function [] = algorithm_MCEU()
 
 %% 1. Initialization \Wv_n and \mathbf{\Phi}
 RAND1 = normrnd(0,1/sqrt(2),[p.N_t,p.d]) + 1i * normrnd(0,1/sqrt(2),[p.N_t,p.d]);

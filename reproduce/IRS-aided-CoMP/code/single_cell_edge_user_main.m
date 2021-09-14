@@ -9,7 +9,7 @@ close all
 p.cell_type = 'hexagonal';
 p.side_length = 200*sqrt(3);
 p.num_cell = 1;
-p.simulation_scenario = 'single cell-edge user';
+p.simulation_scenario = 1;
 p.L0_dB = -30; % channel power gain [dB]
 p.L0 = 10^(p.L0_dB/10);
 p.d0 = 1; %reference distance [m]
