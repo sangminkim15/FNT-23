@@ -37,13 +37,15 @@ p.range_AoA = [0,2*pi]; % arrival of angle is randomly distributed within [0; 2*
 p.range_AoD = [0,2*pi]; % arrival of departure is randomly distributed within [0; 2*pi]
 p.d = 2;   % number of desired data streams
 p.variance = -80; % noise variance [dB]
-p.np = 10^(p.variance*0.001/10);
-p.channel_realization = 500; % channel realizations
+p.np = 10^(p.variance/10) * 0.001;
+p.channel_realization = 10; % channel realizations
+
+p.eta = 1e-3;
 
 
 %% Fig.9 Average max-min rate versus BS tranmit power budget
 objective_value = [];
-P_dB_range = -20 : 5 : 10;
+P_dB_range = -10 : 5 : 10;
 temp = zeros(1,length(P_dB_range));
 
 for exp_idx = 1:p.channel_realization
@@ -55,7 +57,7 @@ for exp_idx = 1:p.channel_realization
         p.P_max_dB = p_idx;
         p.P_max = 10^(p.P_max_dB/10);
         % Multiple cell-edge users (MCEU)
-        % objective_temp = algorithm_MCEU(p,H); 
+        objective_temp = algorithm_MCEU(p,H); 
         objective_value = [objective_value, objective_temp];
     end
     temp = temp + objective_value;
@@ -63,7 +65,7 @@ for exp_idx = 1:p.channel_realization
 end
 avg_max_min_rate = temp/p.channel_realization;
 figure
-plot(P_dB_range,avg_max_min_rate)
+plot(P_dB_range,avg_max_min_rate, 'LineWidth', 1.5)
 grid on
 title('Average max-min rate versus BS transmit power budget')
 xlabel('Transmit power [dB]')
